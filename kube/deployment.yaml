@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: socialbee-website
+  namespace: socialbee
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: socialbee
+    spec:
+      containers:
+      - name: sb-website
+        image: gcr.io/hc-public/socialbee/website:latest
+        command: ["./server"]
+        ports:
+        - containerPort: 8080
