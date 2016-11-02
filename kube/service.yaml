@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: socialbee-website
+  namespace: socialbee
+spec:
+  selector:
+    app: socialbee
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+    protocol: TCP
