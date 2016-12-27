@@ -1,3 +1,4 @@
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -16,3 +17,21 @@ spec:
         command: ["./server"]
         ports:
         - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-www-redirect
+  namespace: socialbee
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx-www-redirect
+    spec:
+      containers:
+      - name: nginx-www-redirect
+        image: cmeulien/nginx-www-redirect
+        ports:
+        - containerPort: 80
